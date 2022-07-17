@@ -1,33 +1,31 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getFetch } from '../../../helpers/getFetch'
-import { ItemList } from './ItemList'
+import { ItemDetail } from './ItemDetail'
 
-export const ItemListContainer = ({ saludos }) => {
-    const [productos, setProductos] = useState([])
+export const ItemDetailContainer = () => {
+    const [details, setDetalle] = useState([])
     const [cargando, setCargando] = useState(true)
-    const { categoriaId } = useParams()
+    const { detailsId } = useParams()
 
     useEffect(() => {
-        if (categoriaId) {
+        if (detailsId) {
             getFetch
-                .then(resp => setProductos(resp.filter(item => item.categoria === categoriaId)))
+                .then(resp => setDetalle(resp.filter(det => det.id === detailsId)))
                 .catch(err => console.log(err))
                 .finally(() => setCargando(false))
         } else {
             getFetch
-                .then(resp => setProductos(resp))
+                .then(resp => setDetalle(resp))
                 .catch(err => console.log(err))
                 .finally(() => setCargando(false))
         }
-    }, [categoriaId])    
+    }, [detailsId])    
 
+    console.log(detailsId);
     return (
-        <div>
-            {saludos}
             <div>
-                {cargando ? <h2>Cargando...</h2> : <ItemList productos={productos} />}
+                {cargando ? <h2>Cargando...</h2> : <ItemDetail details={details} />}
             </div>
-        </div>
     )
 }
