@@ -8,7 +8,7 @@ export function Item({productos}) {
         <Card>
             <Card.Header as="h5">{`${name} - ${categoria}`}</Card.Header>
             <Card.Body>
-                <Card.Img className='w-50' variant="top" src={foto} />
+                <Card.Img className='w-25 rounded mx-auto d-block' variant="top"  src={foto} />
                 <Link to={`/detalle/${id}`}>
                     <Button size="lg" className='w-25' variant="secondary">Detalles</Button>
                 </Link>

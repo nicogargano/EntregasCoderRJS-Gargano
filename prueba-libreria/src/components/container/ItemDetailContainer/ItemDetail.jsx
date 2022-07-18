@@ -7,7 +7,7 @@ export const ItemDetail = ({ details }) => {
     
             details.map (det =>  
                 <Card key={det.id}>
-                    <Card.Img variant="top" src={det.foto} />
+                    <Card.Img className='w-25 rounded mx-auto d-block' variant="top" src={det.foto} />
                     <Card.Body>
                         <Card.Title>{det.name}</Card.Title>
                         <Card.Text>
