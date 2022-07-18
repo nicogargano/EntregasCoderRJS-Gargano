@@ -8,4 +8,4 @@ const CartWidget = () => {
     )
 }
 
-export default CartWidgetasd
+export default CartWidget
