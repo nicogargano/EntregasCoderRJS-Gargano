@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import {ItemCount} from '../../ItemCount/ItemCount'
-import { CartContext } from "../../../context/CartContext";
-import Button from 'react-bootstrap/Button';
+import { CarritoContext } from "../../../context/CartContext";
 import Card from 'react-bootstrap/Card';
 
 export const ItemD = ({ details }) => {
 
-    const [cart, agregarCarrito, vaciarCarrito] = useContext(CartContext)
+    const [cart, agregarCarrito, vaciarCarrito] = useContext(CarritoContext)
     const [cantidad, setCantidad] = useState();
     console.log(cart);
 
@@ -27,7 +26,6 @@ export const ItemD = ({ details }) => {
                     <Card.Text>
                         {`${detalles} - ${price}`}
                     </Card.Text>
-                    <Button variant="primary">Comprar!</Button>
                 </Card.Body>
             </Card>
             {cantidad ? [<Link to='/cart'><button>Terminar la compra</button> </Link>]
