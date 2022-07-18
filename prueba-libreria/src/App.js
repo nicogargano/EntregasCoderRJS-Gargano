@@ -6,6 +6,7 @@ import { Cart } from "./components/container/Cart/Cart";
 import { ItemDetailContainer } from "./components/container/ItemDetailContainer/ItemDetailContainer";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { CartContext } from './context/CartContext';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   // }, [])
 
   return (
+    <CartContext>
     <BrowserRouter>
       <div className="App">
         <NavBar />
@@ -30,12 +32,13 @@ function App() {
           <Route index path='/' element={<ItemListContainer saludos={"Productos"} />} />
           <Route path='/categoria/:categoriaId' element={<ItemListContainer saludos={"Productos"} />} />
           <Route path='/detalle/:detailsId' element={<ItemDetailContainer/>} />
-          <Route path='/carrito' element={<Cart />} />
+          <Route path='/cart' element={<Cart />} />
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </div>
     </BrowserRouter>
-  );
+    </CartContext>
+  )
 }
 
 export default App;
